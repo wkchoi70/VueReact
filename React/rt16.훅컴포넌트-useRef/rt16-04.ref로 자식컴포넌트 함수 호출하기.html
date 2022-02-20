@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ref는</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+</head>
+
+<body>
+    <xmp>
+        부모컴포넌트에서 자식컴포넌트의 함수 호출하기
+            -컴포넌트의 ref는 해당 컴포넌트의 인스턴스를 가르킨다
+            -인스턴스 이므로 모든 데이터와 함수를 가져올수 있다
+
+            function AutoFocusText(props){
+                const refText = useRef(null);
+
+                useEffect( () => {
+                    refText.current.focusTextInput();
+                });
+
+                return(
+                    <CustomTextInput ref={refText}/>
+                )
+            }
+    </xmp>
+
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+
+
+
+
