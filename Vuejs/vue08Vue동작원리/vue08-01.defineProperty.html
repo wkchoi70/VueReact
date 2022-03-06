@@ -76,6 +76,72 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    // Vue를 이용하여 #app 의 {{msg}} 부분에 "Hello" 를 출력하라.
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            msg: 'Hello',
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 + 일반 함수 */
+            app2BtnClick() {
+                alert("app2BtnClick");
+                // 버튼을 클릭하면 msg 를 abc 로바꾸시오.
+                this.$data.msg = "abc";
+            },
+        },
+    });
+</script>
 
+<script>
+    /*
+    /* 자바스크립에서 ViewModel 객체를 구현하기
+       뷰 인스턴스의
+       data: {
+           msg: "Hello",
+       }
+       의 기능을 직접 구현하여 본다
 
+       #app2 에 Object.defineProperty() 메서드의 get, set 설정하고 "123" 을 출력한다.
+       1. document.getElementById() 를 사용하여 #app2 엘리먼트를 찾는다.
+       2. 엘리먼트의 innerHTML 또는 innerText 프러퍼티에 설정
+    */
+   const data = {
+       // 인스턴스 안에서 사용되는 변수 등록. 공유 변수
+        // msg: 'Hello',
+    };
 
+    // 자바스크립에서 ViewModel 객체를 구현하기
+    Object.defineProperty(
+        data,
+        'msg',
+        {
+            get() {
+                // getter. 화면에서 값을 가져온다.
+                return document.getElementById('app2').innerHTML;
+            },
+            set(value){
+                //  setter. 화면을 바꾼다
+                document.getElementById('app2').innerHTML = value;
+            },
+        }
+    );
+
+    // getter 테스트
+    debugger;
+    const value = data.msg; // 이자리에 있는 정보를 가져오다.
+    console.log(value);
+
+    // setter 테스트
+    // 데이터에 값을 넣으면 화면이 바뀐다.
+    data.msg = 123; // 화면이 바뀌었나요?
+
+    function app2BtnClick() {
+        data.msg = "Hi";
+    }
+</script>

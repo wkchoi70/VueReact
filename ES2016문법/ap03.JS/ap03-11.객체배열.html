@@ -26,7 +26,10 @@
                 </pre>
             </li>
             <li class="langjs">
-                <h3 class="langjs">objarray 에 { text: 'Four', value: 'D' } 를 추가하시오. length 프로퍼티를 사용하여 추가.</h3>
+                <h3 class="langjs">
+                    objarray 에 { text: 'Four', value: 'D' } 를 추가하시오. <br>
+                    length 프로퍼티를 사용하여 추가.
+                </h3>
                 <pre class="langjs">
                     <code class="langjs">
 
@@ -34,15 +37,8 @@
                 </pre>
             </li>
             <li class="langjs">
-                <h3 class="langjs">objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.</h3>
-                <pre class="langjs">
-                    <code class="langjs">
-
-                    </code>
-                </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 { text: 'Two', value: 'B' } 를 findIndex 를 이용하여 { text: 'Two', value: 'B' } 를 index를 찾고
+                <h3 class="langjs">
+                    objarray 에서 { text: 'Two', value: 'B' } 를 findIndex 를 이용하여 index를 찾고<br>
                     { text: '2', value: '2' } 로 바꾸시오
                 </h3>
                 <pre class="langjs">
@@ -52,7 +48,10 @@
                 </pre>
             </li>
             <li class="langjs">
-                <h3 class="langjs">objarray 에서 filter 메서드를 사용하여 text의 값이 'One' 인 객체들을 찾아서 console.log 로 출력하시오</h3>
+                <h3 class="langjs">
+                    objarray 에서 filter 메서드를 사용하여<br>
+                    text의 값이 'One' 인 객체들을 찾아서 console.log 로 출력하시오
+                </h3>
                 <pre class="langjs">
                     <code class="langjs">
 
@@ -60,7 +59,9 @@
                 </pre>
             </li>
             <li class="langjs">
-                <h3 class="langjs">objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오. findIndex() 와 splice() 를 사용하여 작성한다.</h3>
+                <h3 class="langjs">
+                    objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오. <br>
+                    findIndex() 와 splice() 를 사용하여 작성한다.</h3>
                 <pre class="langjs">
                     <code class="langjs">
 
@@ -100,16 +101,6 @@
                     </code>
                 </pre>
             </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 filter 메서드를 사용하여 value가 "D" 인 요소만 들어 있는 배열을 만들고 출력하시오.</h3>
-                <pre class="langjs">
-                    <code class="langjs">
-    [
-        { text: 'Four', value: 'D', no:2  },
-    ]
-                    </code>
-                </pre>
-            </li>
         </ol>
     </div>
 </body>
@@ -126,36 +117,54 @@
 
     // objarray 에 { text: 'Four', value: 'D' } 를 추가하시오.
     // length 프로퍼티를 사용하여 추가.
-    // objarray[objarray.length] = {text: 'Four', value: 'D' };
+    objarray[objarray.length] = { text: 'Four', value: 'D' };
 
     // objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.
-    // const index = 1;
-    // objarray[index] = { text : '2', value: '2' };
-
-    // objarray 에서 { text: 'Two', value: 'B' } 를 findIndex 를 이용하여 { text: 'Two', value: 'B' } 를 index를 찾고 { text: '2', value: '2' } 로 바꾸시오
-    // const index = objarray.findIndex( (value,))
+    const index = objarray.findIndex( (value, index, array)=>{
+        // debugger;
+        return  value.text === 'Two' && value.value === 'B';
+    });
+    objarray[index] = { text: '2', value: '2' };
+    console.log(objarray);
 
     // objarray 에서 filter 메서드를 사용하여
     // text의 값이 'One' 인 객체들을 찾아서 console.log 로 출력하시오
-    const arrFiltered = objarray.filter( (obj, index, array)=>{
-        return (obj.text == 'One'); // True or False
+    const arrFiltered = objarray.filter( (obj, index,array)=>{
+        // obj === { text, value }
+        // return (obj.text === 'One'); // true or false
+        return (obj['text'] === 'One'); // true or false
     });
-    consol.log(arrFiltered);
+    console.log(arrFiltered);
 
     // objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오.
     // findIndex() 와 splice() 를 사용하여 작성한다.
+    const index2 = objarray.findIndex( (obj, index, array)=>{
+        return obj.text==='Three' && obj.value==='C';
+    });
+    objarray.splice(index2, 1);
+    console.log(objarray);
 
     // objarray 에서 map 메서드를 사용하여 no 프로퍼티 추가하시오
-    // [
-    //     { text: 'One', value: 'A', no:0 },
-    //     { text: '2', value: '2', no:1  },
-    //     { text: 'Four', value: 'D', no:2  },
-    // ]
+    const arrMaped = objarray.map( (obj,index,value)=>{
+        // obj === { text, value}
+        obj.no = index;
+        return obj;
+    })
+    console.log(arrMaped);
 
     // objarray 에서 reduce 메서드를 사용하여 각 요소의 value 프로퍼티 를 합쳐서 하나의 문자열로 만드시오
-    // map을 이용하여 value 값만 들어있는 배열을 만들고 reduce를 이용하여 하나의 문자열로 만든다. (A2D 가 출력)
-
-    objarray.reduce(callback[, initialValue])
+    // map을 이용하여 value 값만 들어있는 배열을 만들고 reduce를 이용하여 하나의 문자열로 만든다.
+    const str = objarray.map( (obj,index,value)=>{
+            // obj === { text, value}
+            return obj.value;
+        })// ['A','2','D']
+        .reduce( (pvalue,cvalue,index,array)=>{
+            // index===0 ==> ''+'A'
+            // index===1 ==> 'A'+'2'
+            // index===2 ==> 'A2'+'D'
+            return pvalue+cvalue;
+        }, ''); // A24
+    console.log(str);
 
 
 </script>

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개선된 객체 표현식 </title>
-</head>
-
-<body>
-    <xmp>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>개선된 객체 표현식 </title>
+    </head>
+    <body>
+        <xmp>
         개선된 객체 프러퍼티 표현식
         개선된 객체 메서드 표현식
     </xmp>
-
-    <xmp>
+        <xmp>
     ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
 
     < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
@@ -21,9 +19,33 @@
         // ES6 코딩
     </script>
     </xmp>
-</body>
-
+    </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script type="text/babel">
+    var name = '길동';
+    var age = 15;
 
+    // ES5
+    var p1 = {
+        name: name,
+        age: age,
+        powderYell: function () {
+            var yell = this.name.toUpperCase();
+            console.log(yell + yell + "!!!");
+        },
+    };
 
-
+    // ES2015
+    const p2 = {
+        name,
+        age: age,
+        powderYell() {
+            var yell = this.name.toUpperCase();
+            console.log(yell + yell + "!!!");
+        },
+    };
+
+</script>

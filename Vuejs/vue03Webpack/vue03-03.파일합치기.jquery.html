@@ -60,7 +60,7 @@
 
 <body>
     <pre>
-        jQuery의 load 메서드를 이용하여 파일 결합 구현하기
+        jQuery의 load 메서드를 이용하여 파일 결합의 의미를 실습한다.
         jQuery를 사용하여 index.html 에서 header.html 과 footer.html을 import 한다.
 
 
@@ -87,9 +87,11 @@
 
 </html>
 
-<!-- vue 플러그인 임포트   -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
 <script>
+    // <div w3-include-header="header.html"></div>
     $('div[w3-include-header]').load('header.html');
+
+    // <div w3-include-footer="footer.html"></div>
     $('div[w3-include-footer]').load('footer.html');
 </script>

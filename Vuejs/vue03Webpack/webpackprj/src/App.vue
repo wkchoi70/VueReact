@@ -1,28 +1,41 @@
+<style scoped>
+section {
+    height: 150px;
+    background-color: #95db5e;
+    margin: 0 5% 20px 5%;
+    margin: 40px 0px;
+}
+
+div {
+    margin: 40px 20px;
+}
+</style>
+
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="container">
+        <header-comp></header-comp>
+
+        <section id="page1" data-role="page">
+            <div class="content" data-role="content">컨텐츠</div>
+        </section>
+
+        <footer-comp></footer-comp>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './HeaderComp.vue';
+import Footer from './FooterComp.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    data() {
+        return {
+            msg: 'Hello VueJS'
+        };
+    },
+    components: {
+        'header-comp': Header,
+        'footer-comp': Footer
+    }
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
